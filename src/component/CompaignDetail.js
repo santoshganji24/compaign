@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import "../scss/compaigndetail.scss";
+import moment from "moment";
 
 const CompaignDetail = () => {
   const [data, setData] = useState(null);
@@ -18,8 +19,6 @@ const CompaignDetail = () => {
     setData(compaignData);
   }, [id]);
 
-  console.log(data);
-
   if (!data) {
     return <h1>no data found</h1>;
   }
@@ -30,7 +29,9 @@ const CompaignDetail = () => {
         Compaign : <span> {data?.name}</span>
       </div>
       <div className="desc">Description : {data?.description}</div>
-      <div className="launch">Launch Date : {data?.launchDate}</div>
+      <div className="launch">
+        Launch Date : {moment(data?.launchDate).format("DD/MM/YYYY")}
+      </div>
       <Link to={`/`} className="back">
         Back
       </Link>

@@ -10,6 +10,7 @@ const CompaignForm = () => {
     description: { value: "", error: "" },
     launchDate: { value: "", error: "" },
   });
+  console.log(compaign, "heyyy");
 
   const [showToast, setShowToast] = useState(false);
   const handleOpenToast = () => {
@@ -30,7 +31,6 @@ const CompaignForm = () => {
 
   const handleBlur = (e) => {
     const { name, value } = e.target;
-    console.log(value);
     if (!value.trim()) {
       setCompaign((prev) => ({
         ...prev,
@@ -60,15 +60,9 @@ const CompaignForm = () => {
       }
     });
 
-    // If any field is invalid, return early
     if (!formIsValid) {
       return;
     }
-    const formattedDate = new Date(compaign.launchDate.value)
-      .toISOString()
-      .split("T")[0];
-
-    console.log("first", formattedDate);
 
     dispatch(
       addNewCompaign({
