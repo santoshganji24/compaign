@@ -12,7 +12,10 @@
   // gap: 1rem;
   .sidebar {
     display: flex;
-    background-color: red;
+    // background-color: red;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid var(--gray-300, #d0d5dd);
+
     flex-direction: column;
     gap: 2rem;
     width: 20%;
@@ -26,6 +29,7 @@
       padding: 1rem;
       gap: 1rem;
       justify-content: center;
+      border-radius: 0 0 8px 8px;
     }
     @include tablet {
       width: 100%;
@@ -34,6 +38,7 @@
       padding: 2rem;
       gap: 2rem;
       justify-content: center;
+      border-radius: 0 0 8px 8px;
     }
     .sidebaritem {
       border-radius: 6px;

@@ -34,7 +34,7 @@ const CompaignForm = () => {
     if (!value.trim()) {
       setCompaign((prev) => ({
         ...prev,
-        [name]: { ...prev[name], error: "Field is required" },
+        [name]: { ...prev[name], error: "Field is required !" },
       }));
     } else {
       setCompaign((prev) => ({
@@ -55,7 +55,7 @@ const CompaignForm = () => {
         formIsValid = false;
         setCompaign((prev) => ({
           ...prev,
-          [fieldName]: { ...prev[fieldName], error: "Field is required" },
+          [fieldName]: { ...prev[fieldName], error: "Field is required !" },
         }));
       }
     });
@@ -82,6 +82,7 @@ const CompaignForm = () => {
 
   return (
     <div className="form_container">
+      <h2>Create Compaign</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -90,6 +91,7 @@ const CompaignForm = () => {
           onChange={handleChange}
           placeholder="Compaign Name"
           onBlur={handleBlur}
+          className={compaign.name.error ? "error-input" : ""}
         />
         {compaign.name.error && (
           <p className="error-text">{compaign.name.error}</p>
@@ -101,6 +103,7 @@ const CompaignForm = () => {
           onChange={handleChange}
           placeholder="Description"
           onBlur={handleBlur}
+          className={compaign.name.error ? "error-input" : ""}
         />
         {compaign.description.error && (
           <p className="error-text">{compaign.description.error}</p>
@@ -111,7 +114,7 @@ const CompaignForm = () => {
           value={compaign.launchDate.value}
           onChange={handleChange}
           onBlur={handleBlur}
-          className="date"
+          className={`date ${compaign.name.error ? "error-input" : ""}`}
         />
         {compaign.launchDate.error && (
           <p className="error-text">{compaign.launchDate.error}</p>

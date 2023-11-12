@@ -3,6 +3,8 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  flex-direction: column;
+  gap: 3rem;
 
   form {
     display: flex;
@@ -39,5 +41,11 @@
     background: var(--White, #fff);
     box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
     cursor: pointer;
+  }
+  .error-text {
+    color: red;
+  }
+  .error-input {
+    border-color: red;
   }
 }
