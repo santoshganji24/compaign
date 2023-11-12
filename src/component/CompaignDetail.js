@@ -1,16 +1,14 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../scss/compaigndetail.scss";
 import moment from "moment";
+import { loadFromLocalStorage } from "../utils/reusable/storage";
 
 const CompaignDetail = () => {
   const [data, setData] = useState(null);
   const { id } = useParams();
 
-  const compaignList = useSelector(
-    (state) => state.compaign.compaignDetailList
-  );
+  const compaignList = loadFromLocalStorage();
 
   useEffect(() => {
     const compaignData = compaignList.find((item) => {

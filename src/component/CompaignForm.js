@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../scss/compaignform.scss";
-import { useDispatch } from "react-redux";
-import { addNewCompaign } from "../redux/compaignSlice";
 import Toast from "../utils/reusable/Toast";
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from "../utils/reusable/storage";
 
 const CompaignForm = () => {
   const [compaign, setCompaign] = useState({
@@ -10,17 +12,17 @@ const CompaignForm = () => {
     description: { value: "", error: "" },
     launchDate: { value: "", error: "" },
   });
-  console.log(compaign, "heyyy");
 
   const [showToast, setShowToast] = useState(false);
+
+  let store = loadFromLocalStorage();
+
   const handleOpenToast = () => {
     setShowToast(true);
   };
   const handleCloseToast = () => {
     setShowToast(false);
   };
-
-  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,13 +66,16 @@ const CompaignForm = () => {
       return;
     }
 
-    dispatch(
-      addNewCompaign({
+    store = [
+      {
+        id: store.length,
         name: compaign.name.value,
         description: compaign.description.value,
         launchDate: compaign.launchDate.value,
-      })
-    );
+      },
+      ...store,
+    ];
+    saveToLocalStorage(store);
     handleOpenToast();
   };
 

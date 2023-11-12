@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../scss/compaignlist.scss";
 import moment from "moment";
+import { loadFromLocalStorage } from "../utils/reusable/storage";
 
 const CompaignList = () => {
-  const comaignList = useSelector((state) => state.compaign.compaignDetailList);
-  console.log(comaignList, "hey");
+  const comaignList = loadFromLocalStorage();
+
+  useEffect(() => {
+    return () => {
+      loadFromLocalStorage();
+    };
+  }, []);
+
   return (
     <div className="card_container">
       {comaignList?.map((item, index) => {
