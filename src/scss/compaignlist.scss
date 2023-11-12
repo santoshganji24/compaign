@@ -1,0 +1,60 @@
+@import "./mixins";
+
+.card_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    height: 19rem;
+    width: 24%;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    border: 1px solid var(--gray-300, #d0d5dd);
+
+    @include smallmobile {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: 49%;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    .name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      span {
+        // font-weight: 500;
+        font-size: 1.4rem;
+      }
+    }
+
+    .desc {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+    }
+    .launch {
+      margin-top: auto;
+    }
+    .view {
+      border: 1px solid lightgray;
+      width: max-content;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      margin-left: auto;
+    }
+  }
+}
