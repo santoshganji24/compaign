@@ -44,6 +44,8 @@ const MainComponent = () => {
         <select value={selectCompany} onChange={handleCompany}>
           <option value="companyone">companyone</option>
           <option value="companytwo">companytwo</option>
+          <option value="companythree">companythree</option>
+
           <option value="compaignDetailList">compaignDetailList</option>
         </select>
       </div>

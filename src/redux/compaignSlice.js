@@ -2,20 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { mockData } from "../utils/mockdata";
 
 const initialState = {
-  // compaignDetailList: [
-  // {
-  //   id: 0,
-  //   name: "compaign name",
-  //   description: "lorem ipsum",
-  //   launchDate: "20/1/2025",
-  // },
-  // {
-  //   id: 1,
-  //   name: "compaign name",
-  //   description: "lorem ipsum",
-  //   launchDate: "20/1/2024",
-  // },
-  // ],
   selectCompany: "",
   compaignDetailList: mockData,
   companyone: [
@@ -43,19 +29,35 @@ export const compaignSlice = createSlice({
   reducers: {
     addNewCompaign: (state, action) => {
       const { name, description, launchDate, companyName } = action.payload;
-      state[companyName] = [
-        {
-          id: state[companyName]?.length,
-          name: name,
-          description: description,
-          launchDate: launchDate,
-          companyName: companyName,
-        },
-        ...state[companyName],
-      ];
+      console.log(initialState, "inir");
+
+      if (companyName in state) {
+        state[companyName] = [
+          {
+            id: state[companyName]?.length,
+            name: name,
+            description: description,
+            launchDate: launchDate,
+            companyName: companyName,
+          },
+          ...state[companyName],
+        ];
+      } else {
+        state[companyName] = [
+          {
+            id: 1,
+            name: name,
+            description: description,
+            launchDate: launchDate,
+            companyName: companyName,
+          },
+        ];
+      }
     },
     editNewCompaign: (state, action) => {
       const { name, description, launchDate, id, companyName } = action.payload;
+      console.log(initialState, "inir");
+
       let updatedData = state[companyName].map((item) =>
         item.id == id
           ? {

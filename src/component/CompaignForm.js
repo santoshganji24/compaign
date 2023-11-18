@@ -6,7 +6,6 @@ import Toast from "../utils/reusable/Toast";
 import { useLocation, useParams } from "react-router-dom";
 
 const CompaignForm = ({ edit }) => {
-  console.log(edit, "edit");
   const [compaign, setCompaign] = useState({
     name: { value: "", error: "" },
     description: { value: "", error: "" },
@@ -19,8 +18,6 @@ const CompaignForm = ({ edit }) => {
   // );
   let selectedCompany = useSelector((state) => state.compaign.selectCompany);
   const compaignList = useSelector((state) => state.compaign[selectedCompany]);
-
-  console.log(compaignList, "knskndkjsndckjnk");
 
   const [showToast, setShowToast] = useState(false);
 
