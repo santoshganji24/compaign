@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../scss/compaignlist.scss";
 import moment from "moment";
 
 const CompaignList = () => {
-  const comaignList = useSelector((state) => state.compaign.compaignDetailList);
-  console.log(comaignList, "hey");
+  let selectedCompany = useSelector((state) => state.compaign.selectCompany);
+  const comaignList = useSelector((state) => state.compaign[selectedCompany]);
+
+  if (!comaignList) {
+    return <h1>no data</h1>;
+  }
+
   return (
     <div className="card_container">
       {comaignList?.map((item, index) => {
@@ -18,9 +23,14 @@ const CompaignList = () => {
             <div className="launch">
               {moment(item.launchDate).format("DD/MM/YYYY")}
             </div>
-            <Link to={`/${item.id}`} key={index} className="view">
-              View
-            </Link>
+            <div style={{ display: "flex" }}>
+              <Link to={`/${item.id}`} key={index} className="view">
+                View
+              </Link>
+              <Link to={`/edit/${item.id}`} key={index} className="view">
+                Edit
+              </Link>
+            </div>
           </div>
         );
       })}

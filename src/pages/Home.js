@@ -11,6 +11,7 @@ const Home = () => {
       <Route element={<MainComponent />}>
         <Route index element={<CompaignList />} />
         <Route path=":id" element={<CompaignDetail />} />
+        <Route path="/edit/:editId" element={<CompaignForm edit={true} />} />
         <Route path="/createcampaign" element={<CompaignForm />} />
         <Route path="/compaignlist" element={<CompaignList />} />
       </Route>

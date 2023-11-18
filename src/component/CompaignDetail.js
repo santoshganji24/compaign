@@ -8,9 +8,14 @@ const CompaignDetail = () => {
   const [data, setData] = useState(null);
   const { id } = useParams();
 
-  const compaignList = useSelector(
-    (state) => state.compaign.compaignDetailList
-  );
+  // const compaignList = useSelector(
+  //   (state) => state.compaign.compaignDetailList
+  // );
+
+  // console.log(compaignList);
+
+  let selectedCompany = useSelector((state) => state.compaign.selectCompany);
+  const compaignList = useSelector((state) => state.compaign[selectedCompany]);
 
   useEffect(() => {
     const compaignData = compaignList.find((item) => {

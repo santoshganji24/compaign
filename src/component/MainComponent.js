@@ -1,10 +1,25 @@
-import React from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import "../scss/sidebar.scss";
+import { useDispatch } from "react-redux";
+import { companyDetails } from "../redux/compaignSlice";
 
 const MainComponent = () => {
   const location = useLocation();
   const path = location.pathname;
+  const [selectCompany, setSelectCompany] = useState("compaignDetailList");
+
+  const navigate = useNavigate();
+  const handleCompany = (e) => {
+    setSelectCompany(e.target.value);
+  };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(companyDetails(selectCompany));
+    navigate("/");
+  }, [selectCompany]);
 
   return (
     <div className="container">
@@ -26,6 +41,11 @@ const MainComponent = () => {
           Compaign list
         </Link>
         <br />
+        <select value={selectCompany} onChange={handleCompany}>
+          <option value="companyone">companyone</option>
+          <option value="companytwo">companytwo</option>
+          <option value="compaignDetailList">compaignDetailList</option>
+        </select>
       </div>
       <div className="main">
         <Outlet />
