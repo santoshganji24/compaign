@@ -57,6 +57,14 @@
     .active {
       border: 1px solid black;
     }
+    select {
+      border-radius: 6px;
+      background: var(--gray-50, #f9fafb);
+      text-decoration: none;
+      color: black;
+      display: flex;
+      padding: 8px 12px;
+    }
   }
   .main {
     // background-color: green;

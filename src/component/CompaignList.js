@@ -9,7 +9,14 @@ const CompaignList = () => {
   const comaignList = useSelector((state) => state.compaign[selectedCompany]);
 
   if (!comaignList) {
-    return <h1>no data</h1>;
+    return (
+      <h1>
+        no data found
+        <Link to={`/createcampaign`} className="back">
+          create new compaign
+        </Link>
+      </h1>
+    );
   }
 
   return (
