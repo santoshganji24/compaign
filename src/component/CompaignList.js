@@ -7,16 +7,9 @@ import moment from "moment";
 const CompaignList = () => {
   let selectedCompany = useSelector((state) => state.compaign.selectCompany);
   const comaignList = useSelector((state) => state.compaign[selectedCompany]);
-
-  if (!comaignList) {
-    return (
-      <h1>
-        no data found
-        <Link to={`/createcampaign`} className="back">
-          create new compaign
-        </Link>
-      </h1>
-    );
+  console.log(comaignList, "ceee");
+  if (comaignList.length == 0) {
+    return <h1>no data found</h1>;
   }
 
   return (

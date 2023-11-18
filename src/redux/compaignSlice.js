@@ -34,6 +34,7 @@ const initialState = {
       companyName: "companyone",
     },
   ],
+  companytwo: [],
 };
 
 export const compaignSlice = createSlice({
