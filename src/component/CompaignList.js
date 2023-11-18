@@ -8,7 +8,7 @@ const CompaignList = () => {
   let selectedCompany = useSelector((state) => state.compaign.selectCompany);
   const comaignList = useSelector((state) => state.compaign[selectedCompany]);
   console.log(comaignList, "ceee");
-  if (comaignList.length == 0) {
+  if (comaignList?.length == 0) {
     return <h1>no data found</h1>;
   }
 
